@@ -19,7 +19,7 @@ ContactList.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-number: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
     })).isRequired,
     removeContact: PropTypes.func.isRequired,
 }
