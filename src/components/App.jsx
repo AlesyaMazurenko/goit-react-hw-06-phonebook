@@ -4,21 +4,27 @@ import { nanoid } from 'nanoid';
 import Form from "./Form/Form";
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
-import './Form/form.css'
+import './Form/form.css';
+import { useSelector, useDispatch } from "react-redux";
+import { getContacts, getFilter } from "../redux/selectors";
+import { addContact, removeContact, setFilter} from "../redux/action";
 
 export function App() {
-  const [contacts, setContacts] = useState(() => {
-    return (
-      JSON.parse(window.localStorage.getItem('contacts')) || [
-        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      ]
-    )
-  })
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+  // const [contacts, setContacts] = useState(() => {
+  //   return (
+  //     JSON.parse(window.localStorage.getItem('contacts')) || [
+  //       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+  //       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+  //       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+  //       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+  //     ]
+  //   )
+  // })
  
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
 
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -31,30 +37,37 @@ export function App() {
       number: number,
     };
 
-    const isDuplicate = ({ name }) => {
-      const result = contacts.find((item) => item.name === name);
-      return result;
-    }
+    // const isDuplicate = ({ name }) => {
+    //   const result = contacts.find((item) => item.name === name);
+    //   return result;
+    // }
 
-    if (isDuplicate(contact)) {
-      return alert(`${contact.name} is already in contacts`);
-    }
+    // if (isDuplicate(contact)) {
+    //   return alert(`${contact.name} is already in contacts`);
+    // }
+
+   
       // Добавляем запись в state - распыляем новую запись в список контактов
-      return setContacts((prev) => {
-        return [contact, ...prev]
-      });  
+      // return setContacts((prev) => {
+      //   return [contact, ...prev]
+      // }); 
+    const action = addContact(contact);
+    dispatch(action);
   };
 
- const removeContact = (id) => {
-    return setContacts((prev) => {
-      const newContacts = prev.filter((item) => item.id !== id);
-      return newContacts;
-    })
+  const onRemoveContact = (id) => {
+    const action = removeContact(id);
+    dispatch(action);
+    // return setContacts((prev) => {
+    //   const newContacts = prev.filter((item) => item.id !== id);
+    //   return newContacts;
+    // })
   }
 
   const FilterInput = (evt) => {
     const { value } = evt.target;
-    setFilter(value);
+    dispatch(setFilter(value));
+    // setFilter(value);
   }
 
   const getVisibleContacts = () => {
@@ -83,7 +96,7 @@ export function App() {
         <h2> Contacts</h2>
 
         <Filter value={filter} onChange={FilterInput} />
-        <ContactList items={visibleContacts} removeContact={removeContact} />
+        {/* <ContactList items={contacts} removeContact={onRemoveContact} /> */}
       </div> 
     )
   }
