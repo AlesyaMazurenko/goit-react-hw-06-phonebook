@@ -1,13 +1,25 @@
 .form_wrapper {
     margin: 15px;
+    text-align: center;
+
+    width: 350px;
+    margin: 20px auto;
+  
+    border: 2px solid lightsteelblue;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 20px;
 }
 .from {
     display: flex;
     font-size: 18px;
+    margin-bottom: 20px;
 }
 
 .form_label {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
     font-size: 16px;
     font-weight: bold;
@@ -15,16 +27,45 @@
 
 .input_field {
     margin-left: 15px;
-    border-color: aquamarine;
+    /* border-color: aquamarine; */
     font-size: 20px;
+
+    margin-bottom: 20px;
+}
+
+input {
+    width: 160px;
+
+}
+
+label {
+    margin-bottom: 5px;
+    text-align: left;
 }
 
 .form_btn {
-    border: 2px blue solid;
+    border: 2px rgba(68, 0, 255, 0.934) solid;
+    border-radius: 3px;
+    background-color: rgba(145, 145, 233, 0.874);
     font-size: 16px;
     font-weight: bold;  
-    margin-left: 15px;
+    
     cursor: pointer;
-    padding: 6px 100px;
+    padding: 6px 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
 
+.phonebook_contaner {
+    width: 350px;
+    margin-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid lightsteelblue;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 20px;
 }
