@@ -1,15 +1,31 @@
+.contacts-list {
+    display: block;
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 15px;
+}
+
 .contacts_item {
     display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    justify-content: space-between;
+    align-items: left;
+
+    padding: 10px;
+    
     font-size: 18px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .btn_remove {
     border: 1px red solid;
     font-size: 16px;
     font-weight: bold;
+    color: red;
     margin-left: 15px;
     cursor: pointer;
+
+        border-radius: 5px;
+
+        cursor: pointer;
 }
