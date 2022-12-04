@@ -1,13 +1,23 @@
 import './contact.css';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilteredContacts } from 'redux/contacts/contacts-selector';
+import { removeContact } from 'redux/contacts/contacts-slice';
 
-export default function ContactList({ items, removeContact }) {
-    console.log(items);
-    const elements = items.map(({ name, id, number }) => {
+export const ContactList = () => {
+    
+    const filteredContacts = useSelector(getFilteredContacts);
+    const dispatch = useDispatch();
+    
+    const onRemoveContact = (id) => {
+        const action = removeContact(id);    
+        dispatch(action);
+    }
+    
+    const elements = filteredContacts.map(({ name, id, number }) => {
         return <li className="contacts_item" key={id}>
             
             {name}: {number}
-            <button type="button" className='btn_remove' onClick={() => removeContact(id)}>X</button>
+            <button type="button" className='btn_remove' onClick={() => onRemoveContact(id)}>X</button>
         </li>
     })
 
@@ -16,11 +26,11 @@ export default function ContactList({ items, removeContact }) {
     )
 }
 
-ContactList.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-    })).isRequired,
-    removeContact: PropTypes.func.isRequired,
-}
+// ContactList.propTypes = {
+//     items: PropTypes.arrayOf(PropTypes.shape({
+//         id: PropTypes.string.isRequired,
+//         name: PropTypes.string.isRequired,
+//         number: PropTypes.string.isRequired,
+//     })).isRequired,
+//     removeContact: PropTypes.func.isRequired,
+// }

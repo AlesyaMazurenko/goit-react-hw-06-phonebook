@@ -10,11 +10,10 @@
     display: flex;
     justify-content: space-between;
     align-items: left;
-
     padding: 10px;
+    list-style: none;
     
     font-size: 18px;
-    /* font-weight: bold; */
 }
 
 .btn_remove {

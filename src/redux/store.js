@@ -1,9 +1,5 @@
-// import { createStore } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-// import { combineReducers } from "@reduxjs/toolkit";
 import { combineReducers } from 'redux';
-// import { rootReducer } from "./rootReducer";
-// import reducer from "./reducer";
 import {
     persistStore,
     persistReducer,
